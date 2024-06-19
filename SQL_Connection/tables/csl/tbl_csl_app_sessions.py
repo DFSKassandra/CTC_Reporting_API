@@ -58,7 +58,10 @@ def write_db_app_session(
     try:
         new_entry = read_db_app_session(item, db)
     except NotFoundError:
-        # if new_entry.id is not None:  # = "00000000-0000-0000-0000-000000000000":
+        if new_entry.id is None:
+            new_entry.id = "00000000-0000-0000-0000-000000000000"
+            new_entry.productName="SomethingBasic"
+            new_entry.productId="00000000-0000-0000-0000-000000000000"
         try:
             db.add(new_entry)
             db.commit()

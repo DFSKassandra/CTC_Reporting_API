@@ -62,7 +62,7 @@ content: Collection = Collection(
         {"includeTags": False},
         # ^^ Unnecessry to include tags since it is faster to get associations from the Tags call
         {"includeUsers": False},
-        {"includeFavoritedUsers": True},
+        {"includeFavoritedUsers": False},
     ],
 )
 

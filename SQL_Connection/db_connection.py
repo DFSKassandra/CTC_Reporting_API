@@ -1,9 +1,22 @@
 """Class used to create a database and return a database connection"""
 
+
 from sqlalchemy import URL, create_engine
 from sqlalchemy.orm import DeclarativeBase, Session, declarative_base, sessionmaker
 
-from utils.read_file import read_file
+#from utils.read_file import read_file
+# Copy from the utils.read_file.py
+import json
+def read_file(path):
+    """Simple Function to open, read and close a file
+    Returns the contents of a json file"""
+    try:
+        with open(path, "r") as open_file:
+            contents = json.loads(open_file.read())
+    except Exception as err:
+        print(err)
+        contents = {"": {"": {"": ""}}}
+    return contents
 
 ## Define the connection settings for the database
 SETTINGS_IMPORT = read_file("SQL_Connection\\Settings.json")
@@ -31,7 +44,7 @@ class NotFoundError(Exception):
     pass
 
 
-class Base(DeclarativeBase):
+class Base(DeclarativeBase): 
     pass
 
 

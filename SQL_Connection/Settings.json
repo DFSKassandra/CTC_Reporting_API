@@ -1,6 +1,6 @@
 {
     "logTitle": "Database",
-    "serverLanguage": "mssql",
+    "serverLanguage": "postgresql",
     "mssqlConnectionSettings": {
         "driver": "mssql+pyodbc",
         "uid": "sa",
@@ -16,7 +16,7 @@
     "postresqlConnectionSettings": {
         "driver": "postgresql+psycopg2",
         "uid": "postgres",
-        "pwd": "P0stgr3$",
+        "pwd": "DFS_inc-64",
         "host": "localhost",
         "db": "CTC_ReportingDB_Webinar",
         "port": 5432,
