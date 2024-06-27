@@ -106,10 +106,13 @@ def read_db_saved_search(item: CMSSavedSearch, session: Session) -> CMSSavedSear
     )
     if db_item is None:
         raise NotFoundError(f"SavedSearchId: {item.id} not found")
-    db_item_dump = {}
-    for key, value in db_item.__dict__.items():
-        db_item_dump.update({key: value})
-    return CMSSavedSearch(**db_item_dump)
+    # db_item_dump = {}
+    # for key, value in db_item.__dict__.items():
+    #     db_item_dump.update({key: value})
+    try:
+        return CMSSavedSearch(**db_item.__dict__)
+    except:
+        return db_item
 
 
 ## function to update the table

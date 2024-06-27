@@ -94,7 +94,7 @@ def write_db_project(
             return e
     if session is None:
         db.close()
-    return PALProject(**db_item.__dict__)
+    # return PALProject(**db_item.__dict__)
 
 
 ## function to read a project entry item in the table

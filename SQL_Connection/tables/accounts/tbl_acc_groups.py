@@ -46,6 +46,7 @@ def write_db_group(
     db_item = TblAccGroups(
         **base_item.model_dump(exclude_none=True), refreshedId=refreshed.id
     )
+    print(f"{db_item.name}")
     if session is None:
         db = SessionLocal()
     else:
@@ -63,9 +64,20 @@ def write_db_group(
                 write_db_group_member(member, refreshed, db)
                 for member in item.groupMembers
             ]
+    # print(f"Dict length before close: {len(*db_item.__dict__)}")
+    # if len(db_item._sa_instance_state.dict['_sa_instance_state'].dict)==1:
+    #     print(f"Dict length saying 1 but is 18?: {len(db_item._sa_instance_state.dict)}")
+    #     pause=1000
+
     if session is None:
         db.close()
-    return AccGroup(**db_item.__dict__)
+
+    # print(f"Dict length after close: {len(*db_item.__dict__)}")
+    # if len(db_item._sa_instance_state.dict['_sa_instance_state'].dict)==1:
+    #     pause=1000
+
+
+    # return AccGroup(**db_item.__dict__)
 
 
 ## function to read item from the table

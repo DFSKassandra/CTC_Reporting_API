@@ -1,3 +1,4 @@
+import time
 from datetime import datetime
 from typing import Optional
 from uuid import UUID, uuid4
@@ -59,15 +60,25 @@ def write_db_user(
         db.commit()
         db.refresh(db_item)
         if item.roleAssignments != []:
-            [write_db_user_role(role, refreshed, db) for role in item.userRoles]
+            pause=1000
+            for role in item.userRoles:
+                write_db_user_role(role, refreshed, db)
+            # [write_db_user_role(role, refreshed, db) for role in item.userRoles]
+
+
     if session is None:
-        db.close()
-    return AccUser(**db_item.__dict__)
+        if item.roleAssignments != []:
+            # print(f"sleeping for 30 seconds")
+            # # time.sleep(30)
+            # print(f"finished sleeping ")
+            db.close()
+            # print(f"db.close()")
+        else:
+            db.close()
 
+    #
+    # return AccUser(**db_item.__dict__)
 
-## function to read from the table
-def get_all_users():
-    pass
 
 
 ## function to read item from the table
@@ -78,7 +89,7 @@ def read_db_user(item: AccUser, session: Session = None) -> AccUser:
         db = session
     db_item = db.query(TblAccUsers).filter(TblAccUsers.id == item.id).first()
     if db_item is None:
-        raise NotFoundError(f"UserId: {item.id} not found")
+        raise NotFoundError(f"read_db_user UserId: {item.id} not found")
     if session is None:
         db.close()
     return AccUser(**db_item.__dict__)
@@ -95,6 +106,11 @@ def update_user(item: AccUser, session: Session) -> AccUser:
     session.refresh(update_entry)
     return update_entry
 
+
+
+## function to read from the table
+def get_all_users():
+    pass
 
 ## function to delete from the table
 def delete_user():

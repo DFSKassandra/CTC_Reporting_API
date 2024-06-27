@@ -117,7 +117,7 @@ def write_db_content(
             [create_new_file(i, refreshed) for i in item.files]
     if session is None:
         db.close()
-    return CMSContent(**db_item.__dict__)
+    # return CMSContent(**db_item.__dict__)
 
 
 ## function to read from the table

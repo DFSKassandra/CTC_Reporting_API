@@ -31,7 +31,7 @@ class TblPALLogWarningSummaries(Base):
     )
     warningCt: Mapped[int] = mapped_column(Integer, nullable=False)
     description: Mapped[str] = mapped_column(String(255), nullable=False)
-    elementIds: Mapped[str] = mapped_column(String(2000), nullable=False)
+    elementIds: Mapped[str] = mapped_column(String(5000), nullable=False)
     logDate: Mapped[datetime] = mapped_column(DateTime(), nullable=False)
     addedAt: Mapped[datetime] = mapped_column(DateTime(), nullable=False)
     uploadedAt: Mapped[datetime] = mapped_column(DateTime(), nullable=False)

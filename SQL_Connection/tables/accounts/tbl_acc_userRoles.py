@@ -1,3 +1,4 @@
+import time
 from typing import Optional
 from uuid import UUID, uuid4
 
@@ -48,6 +49,7 @@ def write_db_user_role(
     db_item = TblAccUserRoles(
         **item.model_dump(exclude_none=True), refreshedId=refreshed.id
     )
+    print(f"{db_item.roleId}")
     if session is None:
         db = SessionLocal()
     else:
@@ -60,6 +62,7 @@ def write_db_user_role(
         db.refresh(db_item)
     if session is None:
         db.close()
+    # time.sleep(30)
     return AccUserRole(**db_item.__dict__)
 
 
@@ -69,8 +72,8 @@ def read_db_user_role(item: AccUserRole, session: Session = None) -> AccUserRole
         db = SessionLocal()
     else:
         db = session
-    try:
-        db_item = (
+    # try:
+    db_item = (
             db.query(TblAccUserRoles)
             .filter(
                 TblAccUserRoles.userId == item.userId,
@@ -78,10 +81,14 @@ def read_db_user_role(item: AccUserRole, session: Session = None) -> AccUserRole
             )
             .first()
         )
-    except NotFoundError:
+    if db_item is None:
         raise NotFoundError(
             f"UserId: {item.userId} with RoleId: {item.roleId} not found"
         )
+    # except NotFoundError:
+    # raise NotFoundError(
+    #         f"UserId: {item.userId} with RoleId: {item.roleId} not found"
+    #     )
     if session is None:
         db.close()
     return AccUserRole(**db_item.__dict__)

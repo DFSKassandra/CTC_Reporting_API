@@ -76,7 +76,7 @@ def write_db_license(
             ]
     if session is None:
         db.close()
-    return CSLLicense(**db_item.__dict__)
+    # return CSLLicense(**db_item.__dict__)
 
 
 ## function to read from the table

@@ -49,7 +49,7 @@ class Base(DeclarativeBase):
 
 
 ## Create the database engine and session
-engine = create_engine(conn_url)
+engine = create_engine(conn_url,pool_size=20, max_overflow=0)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base.metadata.create_all(bind=engine)
 

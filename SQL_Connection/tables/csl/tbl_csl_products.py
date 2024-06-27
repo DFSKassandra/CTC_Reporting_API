@@ -54,7 +54,7 @@ def write_db_product(
                 write_db_app_session(app_session, refreshed, db)
     finally:
         db.close()
-    return CSLProduct(**db_item.__dict__)
+    # return CSLProduct(**db_item.__dict__)
 
 
 ## function to read from the table

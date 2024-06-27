@@ -111,6 +111,7 @@ def write_db_doc_session(
                 for view_type in item.logViewTypes
             ]
         if item.logWarningSummaries != []:
+            pause=1000
             [
                 write_db_log_warning_summary(warning, refreshed, db)
                 for warning in item.logWarningSummaries

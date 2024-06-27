@@ -18,10 +18,10 @@ TABLE_WRITE_BASE = {
     "acc_groups": tables.write_db_group,
     "csl_products": tables.write_db_product,
     "csl_licenses": tables.write_db_license,
-    # "cms_contents": tables.write_db_content,
-    # "cms_libraries": tables.create_new_library,
-    # "cms_tags": tables.create_new_tag,
-    # "cms_saved_searches": tables.create_new_saved_search,
+    "cms_contents": tables.write_db_content,
+    "cms_libraries": tables.create_new_library,
+    "cms_tags": tables.create_new_tag,
+    "cms_saved_searches": tables.create_new_saved_search,
     "cms_searches": tables.create_new_search,
     "pal_projects": tables.write_db_project,
     "pal_sessions": tables.write_db_session,
@@ -117,6 +117,9 @@ def drop_all():
 def write_all_x(key, refreshed, start_date: str | None = None):
     """Write all data to the database"""
     collection_object = GET_FUNCTIONS[key]()
+    print(f"Current key: {key}")
+    if key == "acc_groups":
+        pause=1000
     for item in collection_object.items:
         if key in TABLE_WRITE_DETAILS:
             if start_date is not None:

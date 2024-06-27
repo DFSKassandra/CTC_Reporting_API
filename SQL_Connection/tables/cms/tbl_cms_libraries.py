@@ -81,7 +81,7 @@ def read_db_library(item: CMSLibrary, session: Session) -> CMSLibrary:
     db_item_dump = {}
     for key, value in db_item.__dict__.items():
         db_item_dump.update({key: value})
-    return CMSLibrary(**db_item_dump)
+    # return CMSLibrary(**db_item_dump)
 
 
 ## function to update the table

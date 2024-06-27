@@ -60,7 +60,7 @@ def write_db_session(
         db.refresh(db_item)
     finally:
         db.close()
-    return PALSession(**db_item.__dict__)
+    # return PALSession(**db_item.__dict__)
 
 
 ## function to read the database for the item
