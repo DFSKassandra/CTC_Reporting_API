@@ -61,7 +61,20 @@ def create_all():
     for core_schema in CORE_SCHEMAS:
         create_schema(core_schema)
     Base.metadata.create_all(bind=engine)
-
+    # default_users=[
+    #         AccUser(
+    #         id="a2d03d2b-f3d5-43fe-b0bb-342c91c890c4",
+    #         email="hive@ctcsoftware.com",
+    #         displayName="HIVE Admin",
+    #         department="Automation (do not change settings)",
+    #         status="DEV",
+    #         addedById="a2d03d2b-f3d5-43fe-b0bb-342c91c890c4",
+    #         updatedById="a2d03d2b-f3d5-43fe-b0bb-342c91c890c4",
+    #         addedAt="2020-04-29T12:40:18.000Z",
+    #         updatedAt="2024-04-17T14:53:14.642Z",
+    #         isSSOUser=False,
+    #     ),
+    #         ]
     default_users = [
         AccUser(
             id="a2d03d2b-f3d5-43fe-b0bb-342c91c890c4",
