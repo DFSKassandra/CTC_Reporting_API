@@ -118,10 +118,10 @@ def write_db_doc_session(
             ]
     if session is None:
         db.close()
-    try:
-        return PALDocSession(**db_item.__dict__)
-    except ValidationError:
-        return item
+    # try:
+    #     # return PALDocSession(**db_item.__dict__)
+    # except ValidationError:
+    #     return item
 
 
 ## function to read the database for the item
@@ -131,7 +131,7 @@ def read_db_doc_session(item: PALDocSession, db: Session) -> PALDocSession:
     )
     if db_item is None:
         raise NotFoundError(f"DocSessionId: {item.id} not found")
-    return PALDocSession(**db_item.__dict__)
+    # return PALDocSession(**db_item.__dict__)
 
 
 ## function to update the database for the item

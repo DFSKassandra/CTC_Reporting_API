@@ -58,9 +58,9 @@ def write_db_log_warning_summary(
         db.add(db_item)
         db.commit()
         db.refresh(db_item)
-    finally:
+    if session is None:
         db.close()
-    return PALLogWarningSummary(**db_item.__dict__)
+    # return PALLogWarningSummary(**db_item.__dict__)
 
 
 ## function to read item from the table
@@ -75,7 +75,7 @@ def read_db_log_warning_summary(
     )
     if db_item is None:
         raise NotFoundError(f"LogWarningSummaryId: {item.id} not found")
-    return PALLogWarningSummary(**db_item.__dict__)
+    # return PALLogWarningSummary(**db_item.__dict__)
 
 
 ## function to update the database for the item

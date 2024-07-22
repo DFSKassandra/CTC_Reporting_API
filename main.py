@@ -11,11 +11,6 @@ if __name__ == "__main__":
     # Testing Section for code
     start_time = time.perf_counter()
     # drop_all()
-    # try:
-    #     create_all()
-    # except:
-    #     print("**********Dropping")
-    #     drop_all()
     create_all()
     write_all()
     # get_all_jsons(CURRENT_DATE_TIME)

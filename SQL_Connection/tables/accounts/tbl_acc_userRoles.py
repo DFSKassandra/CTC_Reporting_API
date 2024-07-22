@@ -49,7 +49,7 @@ def write_db_user_role(
     db_item = TblAccUserRoles(
         **item.model_dump(exclude_none=True), refreshedId=refreshed.id
     )
-    print(f"{db_item.roleId}")
+    # print(f"{db_item.roleId}")
     if session is None:
         db = SessionLocal()
     else:
