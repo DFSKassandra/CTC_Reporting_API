@@ -7,6 +7,9 @@ import time
 from JSON.create_json_cache_files import CURRENT_DATE_TIME, get_all_jsons
 from SQL_Connection.db_main import create_all, drop_all, write_all
 
+    #Micah's commit
+
+
 if __name__ == "__main__":
     # Testing Section for code
     start_time = time.perf_counter()
