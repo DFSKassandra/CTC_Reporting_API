@@ -8,6 +8,6 @@
             "Dev": "api-dev"
         },
         "apiVersion": "v1",
-        "dayOffset": 30
+        "dayOffset": 1
     }
 }
